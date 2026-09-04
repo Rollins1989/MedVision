@@ -1,0 +1,36 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: medvision
+      POSTGRES_PASSWORD: medvision_dev_password
+      POSTGRES_DB: medvision
+    volumes:
+      - medvision_pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U medvision -d medvision"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql+psycopg2://medvision:medvision_dev_password@db:5432/medvision
+      MODEL_CHECKPOINT: /app/models/densenet121_weighted_bce.pt
+    ports:
+      - "8000:8000"
+    volumes:
+      # mount trained checkpoints from the host so a retrained model can be
+      # dropped in without rebuilding the image
+      - ./models:/app/models:ro
+
+volumes:
+  medvision_pgdata:

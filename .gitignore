@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+*.db
+.env
+.venv/
+venv/
+.DS_Store
+mlruns/
+mlflow.db
+data/raw/images/
+data/raw/labels.csv
+data/processed/
+models/*.pt
+!models/.gitkeep
