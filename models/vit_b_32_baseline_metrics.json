@@ -1,0 +1,197 @@
+{
+  "run_name": "vit_b_32_baseline",
+  "model": "vit_b_32",
+  "loss": "bce",
+  "training_time_sec": 234.9,
+  "history": [
+    {
+      "epoch": 0,
+      "train_loss": 0.4318,
+      "val_loss": 0.4563,
+      "val_macro_roc_auc": 0.6414
+    },
+    {
+      "epoch": 1,
+      "train_loss": 0.3714,
+      "val_loss": 0.4816,
+      "val_macro_roc_auc": 0.676
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.3469,
+      "val_loss": 0.4279,
+      "val_macro_roc_auc": 0.6794
+    }
+  ],
+  "test_metrics": {
+    "macro_roc_auc": 0.7946,
+    "macro_pr_auc": 0.4274,
+    "macro_f1": 0.0938,
+    "macro_sensitivity": 0.1071,
+    "macro_specificity": 0.9933,
+    "mean_inference_latency_ms": 107.22,
+    "per_label": [
+      {
+        "label": "Atelectasis",
+        "roc_auc": 0.714,
+        "pr_auc": 0.2975,
+        "f1": 0.0,
+        "precision": 0.0,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "confusion_matrix": [
+          [
+            54,
+            0
+          ],
+          [
+            9,
+            0
+          ]
+        ],
+        "support_positive": 9
+      },
+      {
+        "label": "Cardiomegaly",
+        "roc_auc": 0.9719,
+        "pr_auc": 0.7854,
+        "f1": 0.75,
+        "precision": 0.6667,
+        "sensitivity": 0.8571,
+        "specificity": 0.9464,
+        "confusion_matrix": [
+          [
+            53,
+            3
+          ],
+          [
+            1,
+            6
+          ]
+        ],
+        "support_positive": 7
+      },
+      {
+        "label": "Effusion",
+        "roc_auc": 0.8621,
+        "pr_auc": 0.5304,
+        "f1": 0.0,
+        "precision": 0.0,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "confusion_matrix": [
+          [
+            54,
+            0
+          ],
+          [
+            9,
+            0
+          ]
+        ],
+        "support_positive": 9
+      },
+      {
+        "label": "Infiltration",
+        "roc_auc": 0.8323,
+        "pr_auc": 0.4302,
+        "f1": 0.0,
+        "precision": 0.0,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "confusion_matrix": [
+          [
+            50,
+            0
+          ],
+          [
+            13,
+            0
+          ]
+        ],
+        "support_positive": 13
+      },
+      {
+        "label": "Mass",
+        "roc_auc": 0.9611,
+        "pr_auc": 0.4667,
+        "f1": 0.0,
+        "precision": 0.0,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "confusion_matrix": [
+          [
+            60,
+            0
+          ],
+          [
+            3,
+            0
+          ]
+        ],
+        "support_positive": 3
+      },
+      {
+        "label": "Nodule",
+        "roc_auc": 0.5728,
+        "pr_auc": 0.3674,
+        "f1": 0.0,
+        "precision": 0.0,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "confusion_matrix": [
+          [
+            45,
+            0
+          ],
+          [
+            18,
+            0
+          ]
+        ],
+        "support_positive": 18
+      },
+      {
+        "label": "Pneumonia",
+        "roc_auc": 0.8275,
+        "pr_auc": 0.2557,
+        "f1": 0.0,
+        "precision": 0.0,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "confusion_matrix": [
+          [
+            57,
+            0
+          ],
+          [
+            6,
+            0
+          ]
+        ],
+        "support_positive": 6
+      },
+      {
+        "label": "Pneumothorax",
+        "roc_auc": 0.6148,
+        "pr_auc": 0.2856,
+        "f1": 0.0,
+        "precision": 0.0,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "confusion_matrix": [
+          [
+            56,
+            0
+          ],
+          [
+            7,
+            0
+          ]
+        ],
+        "support_positive": 7
+      }
+    ]
+  },
+  "checkpoint": "/home/claude/medvision/models/vit_b_32_baseline.pt"
+}

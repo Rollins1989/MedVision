@@ -1,0 +1,7 @@
+run,model,loss,roc_auc,pr_auc,f1,sensitivity,specificity,latency_ms,training_time_sec
+densenet121_baseline,densenet121,bce,0.938,0.8287,0.3687,0.3085,0.9972,30.19,176.2
+densenet121_focal,densenet121,focal,0.9394,0.8086,0.2928,0.2103,0.9956,30.15,172.6
+densenet121_weighted_bce,densenet121,weighted_bce,0.9354,0.7689,0.6656,0.9765,0.808,28.49,171.2
+efficientnet_b0_baseline,efficientnet_b0,bce,0.7914,0.4876,0.1292,0.1032,1.0,9.73,91.6
+resnet50_baseline,resnet50,bce,0.8455,0.6561,0.2396,0.1954,0.9958,31.12,208.0
+vit_b_32_baseline,vit_b_32,bce,0.7946,0.4274,0.0938,0.1071,0.9933,107.22,234.9

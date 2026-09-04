@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MedVision — Explainable Chest X-Ray Analysis</title>
+<style>
+  :root {
+    --bg: #0b1220;
+    --panel: #131c30;
+    --panel-2: #1a2540;
+    --border: #253357;
+    --text: #e8edf7;
+    --muted: #8b9ac0;
+    --accent: #4f8cff;
+    --danger: #ff5a6e;
+    --warn: #ffb454;
+    --ok: #38d996;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: radial-gradient(1200px 600px at 20% -10%, #182544 0%, var(--bg) 60%);
+    color: var(--text);
+    min-height: 100vh;
+  }
+  header {
+    padding: 28px 32px 8px;
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+  }
+  header h1 { margin: 0; font-size: 22px; letter-spacing: 0.5px; }
+  header .tag { color: var(--muted); font-size: 13px; }
+  .disclaimer {
+    margin: 0 32px 20px;
+    padding: 10px 14px;
+    border: 1px solid #4a3520;
+    background: #2a2110;
+    color: var(--warn);
+    border-radius: 8px;
+    font-size: 13px;
+  }
+  main {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 24px;
+    padding: 0 32px 40px;
+  }
+  @media (max-width: 900px) { main { grid-template-columns: 1fr; } }
+
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+  }
+  .dropzone {
+    border: 2px dashed var(--border);
+    border-radius: 12px;
+    padding: 40px 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .dropzone.dragover { border-color: var(--accent); background: #16223f; }
+  .dropzone p { margin: 6px 0; color: var(--muted); font-size: 13px; }
+  .dropzone .icon { font-size: 34px; margin-bottom: 6px; }
+  #fileInput { display: none; }
+
+  #preview { margin-top: 16px; text-align: center; }
+  #preview img { max-width: 100%; border-radius: 10px; border: 1px solid var(--border); }
+
+  button#analyzeBtn {
+    width: 100%;
+    margin-top: 16px;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: var(--accent);
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  button#analyzeBtn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  select#labelSelect {
+    width: 100%;
+    margin-top: 10px;
+    padding: 8px;
+    background: var(--panel-2);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+
+  .status { margin-top: 12px; font-size: 13px; color: var(--muted); min-height: 18px; }
+  .status.error { color: var(--danger); }
+
+  .result-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+  .top-finding { font-size: 20px; font-weight: 700; }
+  .top-prob { font-size: 20px; font-weight: 700; color: var(--accent); }
+  .meta-row { color: var(--muted); font-size: 12px; margin-bottom: 18px; }
+
+  .finding-row { display: grid; grid-template-columns: 130px 1fr 60px 90px; align-items: center; gap: 10px; margin: 8px 0; font-size: 13px; }
+  .bar-track { background: var(--panel-2); border-radius: 6px; height: 10px; overflow: hidden; }
+  .bar-fill { height: 100%; background: linear-gradient(90deg, var(--accent), #7fb0ff); }
+  .tier-Low { color: var(--ok); }
+  .tier-Medium { color: var(--warn); }
+  .tier-High { color: var(--danger); }
+
+  .heatmap-section { margin-top: 24px; }
+  .heatmap-section img { max-width: 100%; border-radius: 10px; border: 1px solid var(--border); }
+  .placeholder { color: var(--muted); text-align: center; padding: 60px 20px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🩻 MedVision</h1>
+  <span class="tag">Explainable multi-label chest X-ray analysis</span>
+</header>
+<div class="disclaimer">
+  ⚠️ This system is a research/educational decision-support prototype and is <strong>not intended for clinical diagnosis</strong>.
+</div>
+
+<main>
+  <section class="panel">
+    <div id="dropzone" class="dropzone">
+      <div class="icon">📤</div>
+      <p><strong>Drag &amp; drop a chest X-ray</strong></p>
+      <p>or click to browse (PNG/JPG)</p>
+      <input type="file" id="fileInput" accept="image/*" />
+    </div>
+    <div id="preview"></div>
+
+    <select id="labelSelect">
+      <option value="">Explain: top prediction (default)</option>
+    </select>
+
+    <button id="analyzeBtn" disabled>Analyze</button>
+    <div id="status" class="status"></div>
+  </section>
+
+  <section class="panel" id="resultsPanel">
+    <div class="placeholder">Upload an X-ray to see predictions, uncertainty, and a Grad-CAM explanation here.</div>
+  </section>
+</main>
+
+<script>
+const API_BASE = window.location.origin.includes("8000") || window.location.protocol === "file:"
+  ? "http://localhost:8000"
+  : ""; // same-origin if served behind the API itself
+
+const dropzone = document.getElementById("dropzone");
+const fileInput = document.getElementById("fileInput");
+const preview = document.getElementById("preview");
+const analyzeBtn = document.getElementById("analyzeBtn");
+const statusEl = document.getElementById("status");
+const resultsPanel = document.getElementById("resultsPanel");
+const labelSelect = document.getElementById("labelSelect");
+
+let currentFile = null;
+
+dropzone.addEventListener("click", () => fileInput.click());
+dropzone.addEventListener("dragover", (e) => { e.preventDefault(); dropzone.classList.add("dragover"); });
+dropzone.addEventListener("dragleave", () => dropzone.classList.remove("dragover"));
+dropzone.addEventListener("drop", (e) => {
+  e.preventDefault();
+  dropzone.classList.remove("dragover");
+  if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]);
+});
+fileInput.addEventListener("change", (e) => {
+  if (e.target.files.length) handleFile(e.target.files[0]);
+});
+
+function handleFile(file) {
+  currentFile = file;
+  const url = URL.createObjectURL(file);
+  preview.innerHTML = `<img src="${url}" alt="preview" />`;
+  analyzeBtn.disabled = false;
+  statusEl.textContent = "";
+  statusEl.className = "status";
+}
+
+async function loadModelInfo() {
+  try {
+    const resp = await fetch(`${API_BASE}/model-info`);
+    if (!resp.ok) return;
+    const info = await resp.json();
+    labelSelect.innerHTML = `<option value="">Explain: top prediction (default)</option>` +
+      info.labels.map(l => `<option value="${l}">Explain: ${l}</option>`).join("");
+  } catch (e) { /* API not reachable yet -- fine, user just can't pick a specific label */ }
+}
+loadModelInfo();
+
+analyzeBtn.addEventListener("click", async () => {
+  if (!currentFile) return;
+  analyzeBtn.disabled = true;
+  statusEl.className = "status";
+  statusEl.textContent = "Uploading and running inference…";
+
+  const formData = new FormData();
+  formData.append("file", currentFile);
+
+  const label = labelSelect.value;
+  const endpoint = `${API_BASE}/explain` + (label ? `?label=${encodeURIComponent(label)}` : "");
+
+  try {
+    const resp = await fetch(endpoint, { method: "POST", body: formData });
+    if (!resp.ok) {
+      const err = await resp.json().catch(() => ({ detail: resp.statusText }));
+      throw new Error(err.detail || "Request failed");
+    }
+    const data = await resp.json();
+    renderResults(data);
+    statusEl.textContent = `Done in ${data.latency_ms.toFixed(0)} ms`;
+  } catch (e) {
+    statusEl.className = "status error";
+    statusEl.textContent = `Error: ${e.message}`;
+  } finally {
+    analyzeBtn.disabled = false;
+  }
+});
+
+function renderResults(data) {
+  const findingsHtml = data.findings.map(f => `
+    <div class="finding-row">
+      <span>${f.label}</span>
+      <div class="bar-track"><div class="bar-fill" style="width:${(f.probability * 100).toFixed(0)}%"></div></div>
+      <span>${(f.probability * 100).toFixed(1)}%</span>
+      <span class="tier-${f.uncertainty_tier}">± ${(f.uncertainty * 100).toFixed(1)}% (${f.uncertainty_tier})</span>
+    </div>
+  `).join("");
+
+  const heatmapHtml = data.explanation.available
+    ? `<div class="heatmap-section">
+         <h3>Grad-CAM: ${data.explanation.target_label}</h3>
+         <img src="data:image/png;base64,${data.explanation.heatmap_png_base64}" alt="Grad-CAM heatmap" />
+       </div>`
+    : `<div class="heatmap-section"><p class="placeholder">Explanation not available for this model architecture.</p></div>`;
+
+  resultsPanel.innerHTML = `
+    <div class="result-header">
+      <span class="top-finding">${data.top_finding}</span>
+      <span class="top-prob">${(data.top_probability * 100).toFixed(1)}%</span>
+    </div>
+    <div class="meta-row">Model: ${data.model_name} v${data.model_version} · Prediction ID: ${data.prediction_id} · Latency: ${data.latency_ms.toFixed(0)} ms</div>
+    ${findingsHtml}
+    ${heatmapHtml}
+  `;
+}
+</script>
+
+</body>
+</html>

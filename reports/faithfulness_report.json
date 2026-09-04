@@ -1,0 +1,501 @@
+{
+  "checkpoint": "models/densenet121_weighted_bce.pt",
+  "k_percent_masked": 0.2,
+  "n_total_evaluated": 45,
+  "overall_mean_faithfulness_margin": 0.1044,
+  "overall_pct_faithful": 0.7556,
+  "per_label": {
+    "Atelectasis": {
+      "n_evaluated": 6,
+      "mean_faithfulness_margin": 0.0851,
+      "pct_faithful": 0.8333
+    },
+    "Cardiomegaly": {
+      "n_evaluated": 6,
+      "mean_faithfulness_margin": 0.0119,
+      "pct_faithful": 0.6667
+    },
+    "Effusion": {
+      "n_evaluated": 6,
+      "mean_faithfulness_margin": 0.0801,
+      "pct_faithful": 0.5
+    },
+    "Infiltration": {
+      "n_evaluated": 6,
+      "mean_faithfulness_margin": 0.1893,
+      "pct_faithful": 1.0
+    },
+    "Mass": {
+      "n_evaluated": 3,
+      "mean_faithfulness_margin": 0.2733,
+      "pct_faithful": 1.0
+    },
+    "Nodule": {
+      "n_evaluated": 6,
+      "mean_faithfulness_margin": 0.0866,
+      "pct_faithful": 0.6667
+    },
+    "Pneumonia": {
+      "n_evaluated": 6,
+      "mean_faithfulness_margin": 0.1694,
+      "pct_faithful": 0.8333
+    },
+    "Pneumothorax": {
+      "n_evaluated": 6,
+      "mean_faithfulness_margin": 0.0243,
+      "pct_faithful": 0.6667
+    }
+  },
+  "detail": [
+    {
+      "image_id": "P00203_753e7020.png",
+      "label": "Atelectasis",
+      "baseline_prob": 0.3341,
+      "masked_top_region_prob": 0.7326,
+      "masked_random_region_prob": 0.8351,
+      "drop_from_top_region": -0.3985,
+      "drop_from_random_region": -0.501,
+      "faithfulness_margin": 0.1025
+    },
+    {
+      "image_id": "P00141_3ab08fa6.png",
+      "label": "Atelectasis",
+      "baseline_prob": 0.7218,
+      "masked_top_region_prob": 0.8374,
+      "masked_random_region_prob": 0.9604,
+      "drop_from_top_region": -0.1157,
+      "drop_from_random_region": -0.2386,
+      "faithfulness_margin": 0.1229
+    },
+    {
+      "image_id": "P00050_2514a8c0.png",
+      "label": "Atelectasis",
+      "baseline_prob": 0.849,
+      "masked_top_region_prob": 0.9688,
+      "masked_random_region_prob": 0.9755,
+      "drop_from_top_region": -0.1198,
+      "drop_from_random_region": -0.1266,
+      "faithfulness_margin": 0.0068
+    },
+    {
+      "image_id": "P00183_eb1988bb.png",
+      "label": "Atelectasis",
+      "baseline_prob": 0.5691,
+      "masked_top_region_prob": 0.6346,
+      "masked_random_region_prob": 0.8722,
+      "drop_from_top_region": -0.0655,
+      "drop_from_random_region": -0.3031,
+      "faithfulness_margin": 0.2376
+    },
+    {
+      "image_id": "P00203_a9ada847.png",
+      "label": "Atelectasis",
+      "baseline_prob": 0.765,
+      "masked_top_region_prob": 0.9307,
+      "masked_random_region_prob": 0.9209,
+      "drop_from_top_region": -0.1657,
+      "drop_from_random_region": -0.1559,
+      "faithfulness_margin": -0.0098
+    },
+    {
+      "image_id": "P00183_d55e07b2.png",
+      "label": "Atelectasis",
+      "baseline_prob": 0.741,
+      "masked_top_region_prob": 0.9001,
+      "masked_random_region_prob": 0.9509,
+      "drop_from_top_region": -0.1592,
+      "drop_from_random_region": -0.21,
+      "faithfulness_margin": 0.0508
+    },
+    {
+      "image_id": "P00141_f13fa0bc.png",
+      "label": "Cardiomegaly",
+      "baseline_prob": 0.8905,
+      "masked_top_region_prob": 0.3973,
+      "masked_random_region_prob": 0.4249,
+      "drop_from_top_region": 0.4932,
+      "drop_from_random_region": 0.4656,
+      "faithfulness_margin": 0.0276
+    },
+    {
+      "image_id": "P00050_2514a8c0.png",
+      "label": "Cardiomegaly",
+      "baseline_prob": 0.9718,
+      "masked_top_region_prob": 0.3782,
+      "masked_random_region_prob": 0.4287,
+      "drop_from_top_region": 0.5936,
+      "drop_from_random_region": 0.543,
+      "faithfulness_margin": 0.0505
+    },
+    {
+      "image_id": "P00050_14ddbb6a.png",
+      "label": "Cardiomegaly",
+      "baseline_prob": 0.9696,
+      "masked_top_region_prob": 0.3725,
+      "masked_random_region_prob": 0.4711,
+      "drop_from_top_region": 0.5971,
+      "drop_from_random_region": 0.4985,
+      "faithfulness_margin": 0.0986
+    },
+    {
+      "image_id": "P00104_96d94cd8.png",
+      "label": "Cardiomegaly",
+      "baseline_prob": 0.8904,
+      "masked_top_region_prob": 0.3563,
+      "masked_random_region_prob": 0.2662,
+      "drop_from_top_region": 0.534,
+      "drop_from_random_region": 0.6242,
+      "faithfulness_margin": -0.0901
+    },
+    {
+      "image_id": "P00016_c90b3c92.png",
+      "label": "Cardiomegaly",
+      "baseline_prob": 0.8396,
+      "masked_top_region_prob": 0.199,
+      "masked_random_region_prob": 0.1168,
+      "drop_from_top_region": 0.6406,
+      "drop_from_random_region": 0.7228,
+      "faithfulness_margin": -0.0822
+    },
+    {
+      "image_id": "P00141_3ab08fa6.png",
+      "label": "Cardiomegaly",
+      "baseline_prob": 0.9568,
+      "masked_top_region_prob": 0.43,
+      "masked_random_region_prob": 0.4971,
+      "drop_from_top_region": 0.5268,
+      "drop_from_random_region": 0.4597,
+      "faithfulness_margin": 0.0672
+    },
+    {
+      "image_id": "P00202_1550bb2a.png",
+      "label": "Effusion",
+      "baseline_prob": 0.9729,
+      "masked_top_region_prob": 0.8039,
+      "masked_random_region_prob": 0.6809,
+      "drop_from_top_region": 0.1689,
+      "drop_from_random_region": 0.292,
+      "faithfulness_margin": -0.1231
+    },
+    {
+      "image_id": "P00141_3ab08fa6.png",
+      "label": "Effusion",
+      "baseline_prob": 0.6651,
+      "masked_top_region_prob": 0.531,
+      "masked_random_region_prob": 0.7031,
+      "drop_from_top_region": 0.1341,
+      "drop_from_random_region": -0.038,
+      "faithfulness_margin": 0.1721
+    },
+    {
+      "image_id": "P00079_bab39b4d.png",
+      "label": "Effusion",
+      "baseline_prob": 0.9434,
+      "masked_top_region_prob": 0.7109,
+      "masked_random_region_prob": 0.5135,
+      "drop_from_top_region": 0.2324,
+      "drop_from_random_region": 0.4298,
+      "faithfulness_margin": -0.1974
+    },
+    {
+      "image_id": "P00183_eb1988bb.png",
+      "label": "Effusion",
+      "baseline_prob": 0.9507,
+      "masked_top_region_prob": 0.6811,
+      "masked_random_region_prob": 0.6165,
+      "drop_from_top_region": 0.2695,
+      "drop_from_random_region": 0.3342,
+      "faithfulness_margin": -0.0647
+    },
+    {
+      "image_id": "P00202_3452a6f7.png",
+      "label": "Effusion",
+      "baseline_prob": 0.8366,
+      "masked_top_region_prob": 0.6058,
+      "masked_random_region_prob": 0.8247,
+      "drop_from_top_region": 0.2308,
+      "drop_from_random_region": 0.0119,
+      "faithfulness_margin": 0.2189
+    },
+    {
+      "image_id": "P00183_d55e07b2.png",
+      "label": "Effusion",
+      "baseline_prob": 0.9016,
+      "masked_top_region_prob": 0.4294,
+      "masked_random_region_prob": 0.9044,
+      "drop_from_top_region": 0.4722,
+      "drop_from_random_region": -0.0027,
+      "faithfulness_margin": 0.4749
+    },
+    {
+      "image_id": "P00035_c8f48cd3.png",
+      "label": "Infiltration",
+      "baseline_prob": 0.8478,
+      "masked_top_region_prob": 0.5534,
+      "masked_random_region_prob": 0.7289,
+      "drop_from_top_region": 0.2945,
+      "drop_from_random_region": 0.1189,
+      "faithfulness_margin": 0.1756
+    },
+    {
+      "image_id": "P00202_1550bb2a.png",
+      "label": "Infiltration",
+      "baseline_prob": 0.4584,
+      "masked_top_region_prob": 0.3088,
+      "masked_random_region_prob": 0.4336,
+      "drop_from_top_region": 0.1496,
+      "drop_from_random_region": 0.0248,
+      "faithfulness_margin": 0.1248
+    },
+    {
+      "image_id": "P00031_c5cdd0af.png",
+      "label": "Infiltration",
+      "baseline_prob": 0.7437,
+      "masked_top_region_prob": 0.3104,
+      "masked_random_region_prob": 0.5231,
+      "drop_from_top_region": 0.4333,
+      "drop_from_random_region": 0.2206,
+      "faithfulness_margin": 0.2127
+    },
+    {
+      "image_id": "P00195_ce293ed3.png",
+      "label": "Infiltration",
+      "baseline_prob": 0.6278,
+      "masked_top_region_prob": 0.339,
+      "masked_random_region_prob": 0.5389,
+      "drop_from_top_region": 0.2888,
+      "drop_from_random_region": 0.0889,
+      "faithfulness_margin": 0.1998
+    },
+    {
+      "image_id": "P00014_9010b067.png",
+      "label": "Infiltration",
+      "baseline_prob": 0.7348,
+      "masked_top_region_prob": 0.4255,
+      "masked_random_region_prob": 0.6636,
+      "drop_from_top_region": 0.3093,
+      "drop_from_random_region": 0.0712,
+      "faithfulness_margin": 0.2382
+    },
+    {
+      "image_id": "P00050_2514a8c0.png",
+      "label": "Infiltration",
+      "baseline_prob": 0.9089,
+      "masked_top_region_prob": 0.6664,
+      "masked_random_region_prob": 0.851,
+      "drop_from_top_region": 0.2426,
+      "drop_from_random_region": 0.058,
+      "faithfulness_margin": 0.1846
+    },
+    {
+      "image_id": "P00115_bcf6d9bf.png",
+      "label": "Mass",
+      "baseline_prob": 0.9305,
+      "masked_top_region_prob": 0.8907,
+      "masked_random_region_prob": 0.9109,
+      "drop_from_top_region": 0.0398,
+      "drop_from_random_region": 0.0195,
+      "faithfulness_margin": 0.0203
+    },
+    {
+      "image_id": "P00036_c9d21ea5.png",
+      "label": "Mass",
+      "baseline_prob": 0.8194,
+      "masked_top_region_prob": 0.6966,
+      "masked_random_region_prob": 0.8878,
+      "drop_from_top_region": 0.1228,
+      "drop_from_random_region": -0.0684,
+      "faithfulness_margin": 0.1912
+    },
+    {
+      "image_id": "P00019_e422c57d.png",
+      "label": "Mass",
+      "baseline_prob": 0.809,
+      "masked_top_region_prob": 0.2731,
+      "masked_random_region_prob": 0.8813,
+      "drop_from_top_region": 0.5359,
+      "drop_from_random_region": -0.0724,
+      "faithfulness_margin": 0.6083
+    },
+    {
+      "image_id": "P00006_9c546849.png",
+      "label": "Nodule",
+      "baseline_prob": 0.6775,
+      "masked_top_region_prob": 0.6333,
+      "masked_random_region_prob": 0.8805,
+      "drop_from_top_region": 0.0443,
+      "drop_from_random_region": -0.203,
+      "faithfulness_margin": 0.2472
+    },
+    {
+      "image_id": "P00048_6b7255d1.png",
+      "label": "Nodule",
+      "baseline_prob": 0.5226,
+      "masked_top_region_prob": 0.7267,
+      "masked_random_region_prob": 0.8459,
+      "drop_from_top_region": -0.2042,
+      "drop_from_random_region": -0.3233,
+      "faithfulness_margin": 0.1192
+    },
+    {
+      "image_id": "P00048_1be9566f.png",
+      "label": "Nodule",
+      "baseline_prob": 0.787,
+      "masked_top_region_prob": 0.862,
+      "masked_random_region_prob": 0.6917,
+      "drop_from_top_region": -0.075,
+      "drop_from_random_region": 0.0954,
+      "faithfulness_margin": -0.1704
+    },
+    {
+      "image_id": "P00112_c3e1ee8d.png",
+      "label": "Nodule",
+      "baseline_prob": 0.5926,
+      "masked_top_region_prob": 0.7188,
+      "masked_random_region_prob": 0.6729,
+      "drop_from_top_region": -0.1262,
+      "drop_from_random_region": -0.0803,
+      "faithfulness_margin": -0.0459
+    },
+    {
+      "image_id": "P00184_6f34c468.png",
+      "label": "Nodule",
+      "baseline_prob": 0.7221,
+      "masked_top_region_prob": 0.7501,
+      "masked_random_region_prob": 0.8742,
+      "drop_from_top_region": -0.028,
+      "drop_from_random_region": -0.1521,
+      "faithfulness_margin": 0.1242
+    },
+    {
+      "image_id": "P00045_6c928388.png",
+      "label": "Nodule",
+      "baseline_prob": 0.6639,
+      "masked_top_region_prob": 0.6468,
+      "masked_random_region_prob": 0.8919,
+      "drop_from_top_region": 0.017,
+      "drop_from_random_region": -0.2281,
+      "faithfulness_margin": 0.2451
+    },
+    {
+      "image_id": "P00099_16ae7b89.png",
+      "label": "Pneumonia",
+      "baseline_prob": 0.5652,
+      "masked_top_region_prob": 0.5125,
+      "masked_random_region_prob": 0.7304,
+      "drop_from_top_region": 0.0527,
+      "drop_from_random_region": -0.1652,
+      "faithfulness_margin": 0.2179
+    },
+    {
+      "image_id": "P00031_c5cdd0af.png",
+      "label": "Pneumonia",
+      "baseline_prob": 0.8037,
+      "masked_top_region_prob": 0.6059,
+      "masked_random_region_prob": 0.7006,
+      "drop_from_top_region": 0.1978,
+      "drop_from_random_region": 0.1032,
+      "faithfulness_margin": 0.0947
+    },
+    {
+      "image_id": "P00031_de02110c.png",
+      "label": "Pneumonia",
+      "baseline_prob": 0.672,
+      "masked_top_region_prob": 0.6092,
+      "masked_random_region_prob": 0.8603,
+      "drop_from_top_region": 0.0628,
+      "drop_from_random_region": -0.1883,
+      "faithfulness_margin": 0.2511
+    },
+    {
+      "image_id": "P00079_b7cb6bc5.png",
+      "label": "Pneumonia",
+      "baseline_prob": 0.7967,
+      "masked_top_region_prob": 0.4706,
+      "masked_random_region_prob": 0.8412,
+      "drop_from_top_region": 0.3261,
+      "drop_from_random_region": -0.0445,
+      "faithfulness_margin": 0.3706
+    },
+    {
+      "image_id": "P00016_c90b3c92.png",
+      "label": "Pneumonia",
+      "baseline_prob": 0.8349,
+      "masked_top_region_prob": 0.8436,
+      "masked_random_region_prob": 0.6738,
+      "drop_from_top_region": -0.0087,
+      "drop_from_random_region": 0.1611,
+      "faithfulness_margin": -0.1698
+    },
+    {
+      "image_id": "P00079_bab39b4d.png",
+      "label": "Pneumonia",
+      "baseline_prob": 0.6182,
+      "masked_top_region_prob": 0.5391,
+      "masked_random_region_prob": 0.7907,
+      "drop_from_top_region": 0.0791,
+      "drop_from_random_region": -0.1725,
+      "faithfulness_margin": 0.2516
+    },
+    {
+      "image_id": "P00202_3452a6f7.png",
+      "label": "Pneumothorax",
+      "baseline_prob": 0.9292,
+      "masked_top_region_prob": 0.9983,
+      "masked_random_region_prob": 0.958,
+      "drop_from_top_region": -0.0691,
+      "drop_from_random_region": -0.0288,
+      "faithfulness_margin": -0.0403
+    },
+    {
+      "image_id": "P00031_c5cdd0af.png",
+      "label": "Pneumothorax",
+      "baseline_prob": 0.9171,
+      "masked_top_region_prob": 0.9873,
+      "masked_random_region_prob": 0.9828,
+      "drop_from_top_region": -0.0702,
+      "drop_from_random_region": -0.0658,
+      "faithfulness_margin": -0.0045
+    },
+    {
+      "image_id": "P00031_de02110c.png",
+      "label": "Pneumothorax",
+      "baseline_prob": 0.9505,
+      "masked_top_region_prob": 0.8719,
+      "masked_random_region_prob": 0.9846,
+      "drop_from_top_region": 0.0785,
+      "drop_from_random_region": -0.0341,
+      "faithfulness_margin": 0.1127
+    },
+    {
+      "image_id": "P00037_3110cd36.png",
+      "label": "Pneumothorax",
+      "baseline_prob": 0.9851,
+      "masked_top_region_prob": 0.974,
+      "masked_random_region_prob": 0.9958,
+      "drop_from_top_region": 0.0112,
+      "drop_from_random_region": -0.0107,
+      "faithfulness_margin": 0.0219
+    },
+    {
+      "image_id": "P00016_c90b3c92.png",
+      "label": "Pneumothorax",
+      "baseline_prob": 0.9813,
+      "masked_top_region_prob": 0.9449,
+      "masked_random_region_prob": 0.9987,
+      "drop_from_top_region": 0.0365,
+      "drop_from_random_region": -0.0174,
+      "faithfulness_margin": 0.0538
+    },
+    {
+      "image_id": "P00202_1550bb2a.png",
+      "label": "Pneumothorax",
+      "baseline_prob": 0.9934,
+      "masked_top_region_prob": 0.9949,
+      "masked_random_region_prob": 0.9973,
+      "drop_from_top_region": -0.0015,
+      "drop_from_random_region": -0.0039,
+      "faithfulness_margin": 0.0024
+    }
+  ]
+}

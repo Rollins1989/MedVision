@@ -1,0 +1,91 @@
+{
+  "total_images": 454,
+  "valid_images": 430,
+  "corrupted_count": 6,
+  "duplicate_count": 12,
+  "blank_count": 3,
+  "extreme_brightness_count": 0,
+  "bad_dimensions_count": 0,
+  "bad_channels_count": 3,
+  "missing_labels_count": 0,
+  "corrupted": [
+    "P00020_2c719faa.png",
+    "P00053_aef4433d.png",
+    "P00116_574dac6d.png",
+    "P00136_f437adc2.png",
+    "P00145_d596789e.png",
+    "P00206_0e747fed.png"
+  ],
+  "duplicates": [
+    {
+      "kept": "P00104_96d94cd8.png",
+      "dropped": "P00161_b1fa8187.png"
+    },
+    {
+      "kept": "P00119_ebbb6843.png",
+      "dropped": "P00177_a9889f52.png"
+    },
+    {
+      "kept": "P00183_d55e07b2.png",
+      "dropped": "DUP_P00183_d55e07b2.png"
+    },
+    {
+      "kept": "P00042_fcd19ce4.png",
+      "dropped": "DUP_P00042_fcd19ce4.png"
+    },
+    {
+      "kept": "P00140_eaca0e26.png",
+      "dropped": "DUP_P00140_eaca0e26.png"
+    },
+    {
+      "kept": "P00197_935d8943.png",
+      "dropped": "DUP_P00197_935d8943.png"
+    },
+    {
+      "kept": "P00219_5f02466b.png",
+      "dropped": "DUP_P00219_5f02466b.png"
+    },
+    {
+      "kept": "P00146_823ce053.png",
+      "dropped": "DUP_P00146_823ce053.png"
+    },
+    {
+      "kept": "P00108_73b64838.png",
+      "dropped": "DUP_P00108_73b64838.png"
+    },
+    {
+      "kept": "P00043_d9978ee4.png",
+      "dropped": "DUP_P00043_d9978ee4.png"
+    },
+    {
+      "kept": "P00216_92d1414d.png",
+      "dropped": "DUP_P00216_92d1414d.png"
+    },
+    {
+      "kept": "P00203_a9ada847.png",
+      "dropped": "DUP_P00203_a9ada847.png"
+    }
+  ],
+  "blank_images": [
+    "BLANK_0.png",
+    "BLANK_1.png",
+    "BLANK_2.png"
+  ],
+  "extreme_brightness": [],
+  "bad_dimensions": [],
+  "bad_channels": [
+    {
+      "file": "BADDIM_0.png",
+      "mode": "RGBA"
+    },
+    {
+      "file": "BADDIM_1.png",
+      "mode": "RGBA"
+    },
+    {
+      "file": "BADDIM_2.png",
+      "mode": "RGBA"
+    }
+  ],
+  "missing_labels": []
+}

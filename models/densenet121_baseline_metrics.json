@@ -1,0 +1,215 @@
+{
+  "run_name": "densenet121_baseline",
+  "model": "densenet121",
+  "loss": "bce",
+  "training_time_sec": 176.2,
+  "history": [
+    {
+      "epoch": 0,
+      "train_loss": 0.5803,
+      "val_loss": 0.5461,
+      "val_macro_roc_auc": 0.7501
+    },
+    {
+      "epoch": 1,
+      "train_loss": 0.418,
+      "val_loss": 0.431,
+      "val_macro_roc_auc": 0.773
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.3468,
+      "val_loss": 0.3887,
+      "val_macro_roc_auc": 0.8254
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.3117,
+      "val_loss": 0.3682,
+      "val_macro_roc_auc": 0.8426
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.2854,
+      "val_loss": 0.3561,
+      "val_macro_roc_auc": 0.8542
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.2634,
+      "val_loss": 0.3348,
+      "val_macro_roc_auc": 0.8942
+    }
+  ],
+  "test_metrics": {
+    "macro_roc_auc": 0.938,
+    "macro_pr_auc": 0.8287,
+    "macro_f1": 0.3687,
+    "macro_sensitivity": 0.3085,
+    "macro_specificity": 0.9972,
+    "mean_inference_latency_ms": 30.19,
+    "per_label": [
+      {
+        "label": "Atelectasis",
+        "roc_auc": 0.6831,
+        "pr_auc": 0.4306,
+        "f1": 0.0,
+        "precision": 0.0,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "confusion_matrix": [
+          [
+            54,
+            0
+          ],
+          [
+            9,
+            0
+          ]
+        ],
+        "support_positive": 9
+      },
+      {
+        "label": "Cardiomegaly",
+        "roc_auc": 1.0,
+        "pr_auc": 1.0,
+        "f1": 0.9231,
+        "precision": 1.0,
+        "sensitivity": 0.8571,
+        "specificity": 1.0,
+        "confusion_matrix": [
+          [
+            56,
+            0
+          ],
+          [
+            1,
+            6
+          ]
+        ],
+        "support_positive": 7
+      },
+      {
+        "label": "Effusion",
+        "roc_auc": 1.0,
+        "pr_auc": 1.0,
+        "f1": 0.7143,
+        "precision": 1.0,
+        "sensitivity": 0.5556,
+        "specificity": 1.0,
+        "confusion_matrix": [
+          [
+            54,
+            0
+          ],
+          [
+            4,
+            5
+          ]
+        ],
+        "support_positive": 9
+      },
+      {
+        "label": "Infiltration",
+        "roc_auc": 0.9754,
+        "pr_auc": 0.9238,
+        "f1": 0.0,
+        "precision": 0.0,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "confusion_matrix": [
+          [
+            50,
+            0
+          ],
+          [
+            13,
+            0
+          ]
+        ],
+        "support_positive": 13
+      },
+      {
+        "label": "Mass",
+        "roc_auc": 1.0,
+        "pr_auc": 1.0,
+        "f1": 0.5,
+        "precision": 1.0,
+        "sensitivity": 0.3333,
+        "specificity": 1.0,
+        "confusion_matrix": [
+          [
+            60,
+            0
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "support_positive": 3
+      },
+      {
+        "label": "Nodule",
+        "roc_auc": 0.9679,
+        "pr_auc": 0.9289,
+        "f1": 0.8125,
+        "precision": 0.9286,
+        "sensitivity": 0.7222,
+        "specificity": 0.9778,
+        "confusion_matrix": [
+          [
+            44,
+            1
+          ],
+          [
+            5,
+            13
+          ]
+        ],
+        "support_positive": 18
+      },
+      {
+        "label": "Pneumonia",
+        "roc_auc": 0.883,
+        "pr_auc": 0.378,
+        "f1": 0.0,
+        "precision": 0.0,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "confusion_matrix": [
+          [
+            57,
+            0
+          ],
+          [
+            6,
+            0
+          ]
+        ],
+        "support_positive": 6
+      },
+      {
+        "label": "Pneumothorax",
+        "roc_auc": 0.9949,
+        "pr_auc": 0.9683,
+        "f1": 0.0,
+        "precision": 0.0,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "confusion_matrix": [
+          [
+            56,
+            0
+          ],
+          [
+            7,
+            0
+          ]
+        ],
+        "support_positive": 7
+      }
+    ]
+  },
+  "checkpoint": "/home/claude/medvision/models/densenet121_baseline.pt"
+}

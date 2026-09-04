@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install CPU-only torch/torchvision
+        run: |
+          pip install --index-url https://download.pytorch.org/whl/cpu torch==2.14.0 torchvision==0.29.0
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install ruff
+
+      - name: Lint
+        run: ruff check app src tests
+
+      - name: Generate demo dataset (small synthetic fixture used by tests)
+        run: |
+          python3 src/data/synthetic_generator.py
+          python3 -m src.data.prepare
+
+      - name: Train a tiny checkpoint for API tests to load
+        run: |
+          python3 -c "
+          import yaml
+          cfg = yaml.safe_load(open('configs/densenet.yaml'))
+          cfg['model']['pretrained'] = False
+          cfg['training']['epochs'] = 1
+          cfg['training']['num_workers'] = 0
+          cfg['training']['loss'] = 'weighted_bce'
+          cfg['output']['run_name'] = 'densenet121_weighted_bce'
+          yaml.safe_dump(cfg, open('/tmp/ci.yaml', 'w'))
+          "
+          python3 -m src.training.train --config /tmp/ci.yaml
+
+      - name: Run tests
+        run: pytest -v
+
+  build-docker-image:
+    runs-on: ubuntu-latest
+    needs: lint-and-test
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image (no push -- add a registry login step to publish)
+        run: docker build -t medvision-api:ci .
