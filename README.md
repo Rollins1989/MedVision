@@ -1,18 +1,18 @@
-# 🩻 MedVision
+# MedVision
 
 **Explainable AI system for multi-label chest X-ray analysis.**
 
 MedVision uses deep learning to analyze chest X-rays and identify multiple potential findings while providing **prediction confidence, uncertainty estimates, and visual explanations**.
 
-### 🎯 Problem
+### Problem
 
 Medical imaging models can make predictions without showing **why** they made them, making their results difficult to interpret or trust.
 
-### 💡 Solution
+### Solution
 
 MedVision combines medical image classification with **uncertainty estimation and Grad-CAM explainability**, providing both predictions and visual evidence of the regions influencing the model.
 
-### 🚀 Features
+### Features
 
 * Multi-label chest X-ray classification
 * CNN & Vision Transformer architectures
@@ -29,15 +29,15 @@ MedVision combines medical image classification with **uncertainty estimation an
 * Automated testing with Pytest
 * GitHub Actions CI
 
-### 🛠️ Tech Stack
+### Tech Stack
 
 **Python · PyTorch · FastAPI · PostgreSQL · SQLAlchemy · MLflow · Docker · Pytest · GitHub Actions**
 
-### 🔄 Pipeline
+### Pipeline
 
 `X-ray → Quality Checks → Preprocessing → Deep Learning Model → Prediction + Uncertainty → Grad-CAM → API Response`
 
-### ⚠️ Disclaimer
+### Disclaimer
 
 This is a **research/educational prototype** and is not intended for clinical diagnosis.
 
