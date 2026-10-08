@@ -8,9 +8,9 @@ MedVision now includes both a **Kaggle execution notebook** and a lightweight ev
 
 ## Current status
 
-**Execution notebook: implemented. External metric results: pending execution.**
+**Execution notebook: implemented. External evaluation completed.** The canonical result is preserved under `reports/external_validation/kermany/`.
 
-The repository intentionally does not contain the external medical images or a trained checkpoint. The Kaggle notebook expects the checkpoint to be attached as a Kaggle Input and evaluates the external cohort without retraining.
+The repository intentionally does not contain the external medical images. The evaluated checkpoint is also not committed to the repository. The Kaggle notebook expects the checkpoint to be attached as a Kaggle Input and evaluates the external cohort without retraining.
 
 ## Recommended experiment: Kermany / Guangzhou cohort
 
@@ -37,6 +37,53 @@ The notebook deliberately does **not** upload or copy the external X-rays into t
 ## Data provenance
 
 The Kermany pediatric pneumonia cohort is associated with Guangzhou Women and Children's Medical Center. Because it is a binary pediatric pneumonia dataset, it introduces a meaningful population/domain shift relative to a general multi-label chest-X-ray model. That shift should be reported as a limitation, not hidden.
+
+
+## Completed Kermany / Guangzhou evaluation
+
+The frozen DenseNet121 + Weighted BCE checkpoint was evaluated on all **5,856 images** discovered under the attached Kermany cohort's train, test and validation directories.
+
+| Metric | Result |
+|---|---:|
+| Images evaluated | **5,856** |
+| Normal / Pneumonia | **1,583 / 4,273** |
+| Quality exclusions | **0** |
+| ROC-AUC | **0.3944** |
+| Average Precision | **0.6696** |
+| Accuracy @ 0.5 | **72.90%** |
+| Precision @ 0.5 | **72.95%** |
+| Sensitivity @ 0.5 | **99.91%** |
+| Specificity @ 0.5 | **0.00%** |
+| F1 @ 0.5 | **84.33%** |
+| Mean Pneumonia probability | **0.9938** |
+| Median Pneumonia probability | **0.9980** |
+
+Confusion matrix at the fixed threshold:
+
+~~~text
+                 Predicted
+              Normal  Pneumonia
+Actual Normal      0       1583
+       Pneumonia   4       4269
+~~~
+
+The checkpoint therefore shows **substantial external-domain failure** on this pediatric cohort. It correctly identifies almost every Pneumonia image but labels every Normal image as Pneumonia at the fixed threshold. The mean and median Pneumonia probabilities are both near 1.0, indicating severe external overconfidence.
+
+The result is retained as a negative/generalization finding rather than hidden or threshold-tuned away.
+
+### Descriptive uncertainty analysis
+
+A separate 2,000-replicate IID bootstrap produced the following percentile 95% intervals:
+
+| Metric | Estimate | 95% bootstrap interval |
+|---|---:|---:|
+| ROC-AUC | 0.3944 | 0.3777–0.4099 |
+| Average Precision | 0.6696 | 0.6540–0.6855 |
+| Sensitivity @ 0.5 | 0.9991 | 0.9979–0.9998 |
+| Specificity @ 0.5 | 0.0000 | 0.0000–0.0000 |
+| F1 @ 0.5 | 0.8433 | 0.8357–0.8504 |
+
+This analysis was performed after the primary frozen evaluation and was not used to choose a threshold.
 
 ## Local evaluator
 
@@ -86,7 +133,12 @@ external_roc_curve.png
 external_pr_curve.png
 external_confusion_matrix.png
 external_reliability.png
+POSTHOC_ANALYSIS.md
+posthoc_analysis.json
+threshold_sensitivity.csv
+prediction_summary.csv
 MANIFEST.json
+SHA256SUMS.txt
 ```
 
 These are intentionally small enough to transfer back into the MedVision repository without copying the underlying X-ray corpus.
