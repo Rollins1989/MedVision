@@ -1,0 +1,28 @@
+{
+  "source_dataset": "paultimothymooney/chest-xray-pneumonia",
+  "cohort": "Kermany / Guangzhou Women and Children Medical Center",
+  "images_used": 5856,
+  "checkpoint": "densenet121_weighted_bce.pt",
+  "evaluation_code_commit": "76e27d03383b44fe8908434609b2c75c5c333193",
+  "repository_artifacts": [
+    "external_validation.json",
+    "posthoc_analysis.json",
+    "threshold_sensitivity.csv",
+    "prediction_summary.csv",
+    "external_roc_curve.svg",
+    "external_pr_curve.svg",
+    "external_confusion_matrix.svg",
+    "external_reliability.svg",
+    "POSTHOC_ANALYSIS.md"
+  ],
+  "raw_kaggle_artifacts_not_committed": [
+    "external_predictions.csv",
+    "external_quality_audit.csv",
+    "external_pneumonia_probabilities.npy",
+    "external_pneumonia_labels.npy",
+    "external_roc_curve.png",
+    "external_pr_curve.png",
+    "external_confusion_matrix.png",
+    "external_reliability.png"
+  ]
+}
