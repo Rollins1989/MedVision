@@ -95,6 +95,42 @@ The API defaults to the DenseNet121 + Weighted BCE checkpoint because it is the 
 
 Full interpretation is documented in the [Model Card](docs/MODEL_CARD.md) and [Experiment Registry](docs/EXPERIMENTS.md).
 
+
+## External validation: important negative finding
+
+A frozen DenseNet121 + Weighted BCE checkpoint was evaluated on the complete **5,856-image Kermany/Guangzhou pediatric chest X-ray cohort** available in the Kaggle input. No retraining or threshold optimization was performed on the external labels.
+
+| Metric | Kermany external evaluation |
+|---|---:|
+| Images evaluated | **5,856** |
+| ROC-AUC | **0.3944** |
+| Average Precision | **0.6696** |
+| Accuracy @ 0.5 | **72.90%** |
+| Sensitivity @ 0.5 | **99.91%** |
+| Specificity @ 0.5 | **0.00%** |
+| F1 @ 0.5 | **84.33%** |
+| Mean Pneumonia probability | **0.9938** |
+| Median Pneumonia probability | **0.9980** |
+
+At the fixed 0.5 threshold, the confusion matrix is:
+
+~~~text
+                 Predicted
+              Normal  Pneumonia
+Actual Normal      0       1583
+       Pneumonia   4       4269
+~~~
+
+The model therefore labels **all 1,583 Normal images as Pneumonia**. The high sensitivity is not evidence of good external performance because specificity is zero and the score distribution is severely overconfident.
+
+This is reported as a **domain-shift/failure-analysis finding**, not as clinical validation. The external cohort is pediatric (ages 1–5) and exposes only a binary Normal/Pneumonia endpoint, so this experiment evaluates only MedVision's Pneumonia output.
+
+See [External Validation](docs/EXTERNAL_VALIDATION.md) for the full protocol, provenance, limitations, bootstrap analysis and published artifacts.
+
+![External ROC](reports/external_validation/kermany/external_roc_curve.svg)
+
+![External reliability](reports/external_validation/kermany/external_reliability.svg)
+
 ## Explainability
 
 Grad-CAM is implemented for CNN backbones and evaluated rather than assumed to be faithful.
@@ -243,7 +279,7 @@ The CI workflow installs a CPU-compatible PyTorch environment, runs linting/test
 
 This is not a clinical validation study. The current evidence is limited by dataset size, population coverage, external-validation availability, label quality, calibration quality, and the known limitations of post-hoc visual explanations.
 
-The next major scientific upgrade is **independent external validation**. The repository now includes the evaluation harness, but no external medical dataset is bundled; results must be generated only after evaluating a separately obtained, appropriately licensed dataset. Calibration experiments now compare raw probabilities, global temperature scaling, and per-label sigmoid calibration on a disjoint calibration split.
+The project now includes a completed frozen-checkpoint external evaluation on the Kermany/Guangzhou pediatric cohort. That experiment is intentionally treated as a robustness stress test rather than clinical validation and documents a substantial domain-shift failure. Calibration experiments now compare raw probabilities, global temperature scaling, and per-label sigmoid calibration on a disjoint calibration split.
 
 ## Disclaimer
 
