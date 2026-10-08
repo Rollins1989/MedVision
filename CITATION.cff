@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+title: "MedVision"
+message: "If you use MedVision in academic or research work, please cite this repository."
+type: software
+authors:
+  - family-names: "Chauhan"
+    given-names: "Kuldeep Singh"
+repository-code: "https://github.com/Rollins1989/MedVision"
+url: "https://github.com/Rollins1989/MedVision"
+license: MIT
+version: 1.1.0
+date-released: 2026-10-08
+abstract: "An explainable multi-label chest X-ray analysis system covering patient-level splitting, class-imbalance experiments, uncertainty, Grad-CAM, calibration analysis, and FastAPI deployment."
+keywords:
+  - medical imaging
+  - chest X-ray
+  - computer vision
+  - explainable AI
+  - PyTorch
