@@ -1,0 +1,31 @@
+{
+  "protocol": "External validation of frozen MedVision checkpoint on complete Kermany/Guangzhou cohort available to the notebook",
+  "dataset": "Kermany pediatric chest X-ray dataset / Guangzhou Women and Children Medical Center",
+  "n_images_source": 5856,
+  "n_images_evaluated": 5856,
+  "n_images_excluded_quality": 0,
+  "class_counts_source": {"PNEUMONIA": 4273, "NORMAL": 1583},
+  "class_counts_evaluated": {"PNEUMONIA": 4273, "NORMAL": 1583},
+  "medvision_checkpoint": "densenet121_weighted_bce.pt",
+  "model_name": "densenet121",
+  "pneumonia_label_index": 6,
+  "threshold_for_binary_metrics": 0.5,
+  "roc_auc": 0.39443447441137913,
+  "pr_auc_average_precision": 0.6695882982363467,
+  "accuracy_at_0_5": 0.7289959016393442,
+  "precision_at_0_5": 0.7294941900205059,
+  "recall_sensitivity_at_0_5": 0.9990638895389656,
+  "specificity_at_0_5": 0.0,
+  "f1_at_0_5": 0.8432592592592594,
+  "confusion_matrix_tn_fp_fn_tp": [0, 1583, 4, 4269],
+  "mean_latency_ms": 1.1425472887637744,
+  "median_latency_ms": 0.8846949531253756,
+  "mean_pneumonia_probability": 0.9938105940818787,
+  "median_pneumonia_probability": 0.997985303401947,
+  "evaluation_notes": [
+    "Checkpoint was loaded without retraining.",
+    "No threshold was optimized on the external cohort.",
+    "Only the Pneumonia output is evaluated because the external labels are binary Normal/Pneumonia.",
+    "Normal is treated as the negative class for the binary Pneumonia endpoint."
+  ]
+}
