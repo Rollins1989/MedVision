@@ -208,6 +208,7 @@ Then open the FastAPI documentation at `/docs`.
 | [Data Card](docs/DATA_CARD.md) | Dataset, quality, split and limitations |
 | [Model Card](docs/MODEL_CARD.md) | Model purpose, metrics, risks and limitations |
 | [Experiment Registry](docs/EXPERIMENTS.md) | Research questions and decision log |
+| [Failure Analysis](docs/FAILURE_ANALYSIS.md) | Failure modes, trade-offs and next experiments |
 | [Results](reports/RESULTS.md) | Visual benchmark and explainability summary |
 | [Experiment table](reports/experiment_table.md) | Raw benchmark table |
 | [Calibration report](reports/calibration_report.json) | Calibration evidence |
