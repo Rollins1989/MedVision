@@ -175,6 +175,10 @@ python -m venv .venv
 source .venv/bin/activate
 
 pip install -r requirements.txt
+
+# Optional developer tooling
+pip install -e ".[dev]"
+pre-commit install
 ```
 
 ### 3. Run tests
@@ -208,6 +212,7 @@ Then open the FastAPI documentation at `/docs`.
 | [API Examples](docs/API_EXAMPLES.md) | cURL, Python, errors and OpenAPI |
 | [Architecture](docs/ARCHITECTURE.md) | System and inference design |
 | [Data Card](docs/DATA_CARD.md) | Dataset, quality, split and limitations |
+| [Calibration](docs/CALIBRATION.md) | Disjoint-split calibration experiment |
 | [Model Card](docs/MODEL_CARD.md) | Model purpose, metrics, risks and limitations |
 | [Experiment Registry](docs/EXPERIMENTS.md) | Research questions and decision log |
 | [Failure Analysis](docs/FAILURE_ANALYSIS.md) | Failure modes, trade-offs and next experiments |
