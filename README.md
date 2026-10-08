@@ -7,6 +7,7 @@
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.x-ee4c2c.svg)](https://pytorch.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-API-009688.svg)](https://fastapi.tiangolo.com/)
 [![Tests](https://img.shields.io/badge/tests-pytest-0A9EDC.svg)](https://docs.pytest.org/)
+[![Coverage](https://codecov.io/gh/Rollins1989/MedVision/branch/main/graph/badge.svg)](https://codecov.io/gh/Rollins1989/MedVision)
 
 > **Research / educational prototype. Not for clinical diagnosis or treatment decisions.**
 
@@ -204,11 +205,13 @@ Then open the FastAPI documentation at `/docs`.
 
 | Document | Purpose |
 |---|---|
+| [API Examples](docs/API_EXAMPLES.md) | cURL, Python, errors and OpenAPI |
 | [Architecture](docs/ARCHITECTURE.md) | System and inference design |
 | [Data Card](docs/DATA_CARD.md) | Dataset, quality, split and limitations |
 | [Model Card](docs/MODEL_CARD.md) | Model purpose, metrics, risks and limitations |
 | [Experiment Registry](docs/EXPERIMENTS.md) | Research questions and decision log |
 | [Failure Analysis](docs/FAILURE_ANALYSIS.md) | Failure modes, trade-offs and next experiments |
+| [External Validation](docs/EXTERNAL_VALIDATION.md) | Independent-dataset evaluation protocol and harness |
 | [Results](reports/RESULTS.md) | Visual benchmark and explainability summary |
 | [Experiment table](reports/experiment_table.md) | Raw benchmark table |
 | [Calibration report](reports/calibration_report.json) | Calibration evidence |
@@ -234,7 +237,7 @@ The CI workflow installs a CPU-compatible PyTorch environment, runs linting/test
 
 This is not a clinical validation study. The current evidence is limited by dataset size, population coverage, external-validation availability, label quality, calibration quality, and the known limitations of post-hoc visual explanations.
 
-The next major scientific upgrade should be **independent external validation**, followed by systematic per-label threshold and calibration analysis.
+The next major scientific upgrade is **independent external validation**. The repository now includes the evaluation harness, but no external medical dataset is bundled; results must be generated only after evaluating a separately obtained, appropriately licensed dataset. Calibration experiments now compare raw probabilities, global temperature scaling, and per-label sigmoid calibration on a disjoint calibration split.
 
 ## Disclaimer
 
