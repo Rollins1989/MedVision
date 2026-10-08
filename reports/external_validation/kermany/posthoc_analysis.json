@@ -1,0 +1,13 @@
+{
+  "bootstrap_replicates": 2000,
+  "random_seed": 42,
+  "method": "IID bootstrap over evaluated images; percentile 95% intervals",
+  "primary_metrics": {
+    "roc_auc": {"point_estimate": 0.39443447441137913, "bootstrap_95_ci": [0.37769178580646784, 0.40993492902707895]},
+    "average_precision": {"point_estimate": 0.6695882982363467, "bootstrap_95_ci": [0.6539749551204378, 0.6855226157519337]},
+    "sensitivity_at_0_5": {"point_estimate": 0.9990638895389656, "bootstrap_95_ci": [0.9979171367546094, 0.999768787463355]},
+    "specificity_at_0_5": {"point_estimate": 0.0, "bootstrap_95_ci": [0.0, 0.0]},
+    "f1_at_0_5": {"point_estimate": 0.8432592592592593, "bootstrap_95_ci": [0.8356695496570236, 0.850412249705536]}
+  },
+  "threshold_sweep_note": "Descriptive post-hoc sensitivity analysis only. Thresholds were not optimized and the sweep is not used to redefine the primary external-validation result."
+}
