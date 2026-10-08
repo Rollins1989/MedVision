@@ -16,7 +16,7 @@ The new evaluator compares:
 
 The calibrators must be fit on a calibration split that is separate from the model-training data and final test data.
 
-This separation is important because fitting a calibrator on training predictions can produce optimistic probability estimates. citeturn0search0turn0search3
+This separation is important because fitting a calibrator on training predictions can produce optimistic probability estimates.
 
 ## Metrics
 
@@ -49,7 +49,7 @@ python -m src.evaluation.calibration \
 
 A method is not called “better calibrated” simply because it is more complex. The preferred method should improve calibration metrics on data that was not used to fit it, while preserving a clear record of the baseline.
 
-For small calibration datasets, isotonic regression should be treated cautiously because non-parametric calibration can overfit. citeturn0search3
+For small calibration datasets, isotonic regression should be treated cautiously because non-parametric calibration can overfit.
 
 ## Current status
 
