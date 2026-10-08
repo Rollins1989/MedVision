@@ -217,6 +217,7 @@ Then open the FastAPI documentation at `/docs`.
 | [Experiment Registry](docs/EXPERIMENTS.md) | Research questions and decision log |
 | [Failure Analysis](docs/FAILURE_ANALYSIS.md) | Failure modes, trade-offs and next experiments |
 | [External Validation](docs/EXTERNAL_VALIDATION.md) | Independent-dataset evaluation protocol and harness |
+| [Kaggle External Validation](notebooks/external_validation_kermany.ipynb) | Run the frozen model on the complete Kermany/Guangzhou cohort |
 | [Results](reports/RESULTS.md) | Visual benchmark and explainability summary |
 | [Experiment table](reports/experiment_table.md) | Raw benchmark table |
 | [Calibration report](reports/calibration_report.json) | Calibration evidence |
